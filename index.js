@@ -38,11 +38,17 @@ Aşağıdakileri yapmak için aşağıdaki kopyalama işlevini kullanın:
    1. parametre olarak bir dizi alın - işlev çağrıldığında orijinalTatlar'i argüman olarak ileteceksiniz.
    2. Alınan dizinin bir kopyasını döndür
 */
+//////
 
+function kopyala(dizi){
+  let newArray = [...dizi]
+  return newArray;
 
-function kopyala(/*kod buraya*/){
-  /*kod buraya*/
 }
+console.log (orijinalTatlar);
+let yeniArray = kopyala(orijinalTatlar);
+yeniArray[0] = "Elma";
+console.log (orijinalTatlar[0]);
 
 
 /* Görev 2:
@@ -56,10 +62,13 @@ Bir dizinin tam olarak 25 çeşit olduğunu onaylayın. İşleviniz şunları ka
 */
 
 
-function dizi25Cesitmi(/*kod buraya*/){
-  /*kod buraya*/
+function dizi25Cesitmi(dizi){
+  if (dizi.length == 25){
+    return true;
+  }
+  else return false;
 }
-
+console.log (dizi25Cesitmi(orijinalTatlar));
 
 /* Görev 3:
 Pastane sahibi size yeni bir lezzet fikriyle geldi: Kakule! Bunun da çok tutacağından çok emin. Bu lezzeti eklemek için diziyi değiştirmeniz gerekir.
@@ -74,8 +83,9 @@ Aşağıdakileri yapmak için cesitEkle işlevini kullanın:
 */
 
 
-function cesitEkle(/*kod buraya*/){
-  /*kod buraya*/
+function cesitEkle(tatlar,yeniTatlar){
+  tatlar.unshift(yeniTatlar)
+return tatlar;
 }
 
 
@@ -92,10 +102,11 @@ Aşağıdakileri yapmak için sonCesitiKaldir işlevini kullanın:
 */
 
 
-function sonCesitiKaldir(/*kod buraya*/){
-  /*kod buraya*/
+function sonCesitiKaldir(longArray){
+  longArray.pop();
+  return longArray;
 }
-
+console.log (sonCesitiKaldir (orijinalTatlar));
 
 /* Görev 5:
 Dizideki belirli bir indeksteki çeşniyi döndüren bir işlev yazın.
@@ -108,8 +119,8 @@ Aşağıdakileri yapmak için aşağıdaki indekstekiCesitiGetir işlevini kulla
    Örneğin: indekstekiCesitiGetir(orijinalTatlar, 2) çalıştırılmasıyla, Kakule'in başarıyla eklendiği varsayarsak sonuç "Ceviz" olucaktır.
 */
 
-function indekstekiCesitiGetir(/*kod buraya*/){
-  /*kod buraya*/
+function indekstekiCesitiGetir(originArray,index){
+ return originArray[index];
 }
 
 
@@ -128,11 +139,18 @@ Aşağıdakileri yapmak için ismeGoreCesitCikar işlevini kullanın:
   İPUCU: Bunun için .splice() kullanabilirsiniz.
 */
 
-function ismeGoreCesitCikar(/*kod buraya*/){
-  /*kod buraya*/
+function ismeGoreCesitCikar(originArray,oldFlavor){
+  for (let i = 0 ; i < originArray.length ; i++)
+{
+    if (originArray[i] == oldFlavor)
+{
+    originArray.splice(i,1);
+    return originArray;
 }
 
-
+}
+  return "Aradığınız lezzet bulunamadı."
+}
 /* Görev 7:
 
 14 Şubat Sevgililer Günü'nde Firma, tüm çikolata lezzetlerini öne çıkaran bir promosyon malzemeleri oluşturmak istiyor.
@@ -154,8 +172,14 @@ Aşağıdakileri yapmak için ismeGoreFiltrele işlevini kullanın:
 */
 
 
-function ismeGoreFiltrele(/*kod buraya*/){
-  /*kod buraya*/
+function ismeGoreFiltrele(tatlar,filterValue){
+  let yeniDizi=[];
+  for (let i=0 ; i < tatlar.length ; i++){
+    if (tatlar[i].includes(filterValue)){
+          yeniDizi.push(tatlar[i]);
+    }
+  }
+  return yeniDizi;
 }
 
 
